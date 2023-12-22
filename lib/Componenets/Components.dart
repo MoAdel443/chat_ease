@@ -15,3 +15,19 @@ Widget txt (String txt,Color color, double fontSize,FontWeight fontWeight ,{doub
   );
 
 }
+
+
+
+
+Widget button (double width, double height ,Color color ,VoidCallback onPressed, String lable ,Color txtColor){
+  return SizedBox(
+    width: width,
+    height: height,
+    child: MaterialButton(
+      color: color,
+      shape: const StadiumBorder(),
+      onPressed: onPressed,
+      child: txt(lable , txtColor, 16.0, FontWeight.bold),
+    ),
+  );
+}

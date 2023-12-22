@@ -59,20 +59,32 @@ class OnBoardingScreen extends StatelessWidget {
                 const SizedBox(
                   height: 60.0,
                 ),
-                SizedBox(
-                  width: double.infinity,
-                  height: 64,
-                  child: MaterialButton(
-                    color: Colors.white,
-                    shape: const StadiumBorder(),
-                    onPressed: (){
-                      Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(builder: (c) {
-                        return const LoginScreen();
-                      }),);
-                    },
-                    child: txt("Get Started", Colors.black, 16.0, FontWeight.bold),
-                  ),
+                // SizedBox(
+                //   width: double.infinity,
+                //   height: 64,
+                //   child: MaterialButton(
+                //     color: Colors.white,
+                //     shape: const StadiumBorder(),
+                //     onPressed: (){
+                //       Navigator.of(context).pushReplacement(
+                //         MaterialPageRoute(builder: (c) {
+                //         return LoginScreen();
+                //       }),);
+                //     },
+                //     child: txt("Get Started", Colors.black, 16.0, FontWeight.bold),
+                //   ),
+                // ),
+                button(
+                    double.infinity,
+                    64,
+                    Colors.white,
+                    () { Navigator.of(context).pushReplacement(
+                         MaterialPageRoute(builder: (c) {
+                         return LoginScreen();
+                  }),);},
+                    "Get Started",
+                  Colors.black
+
                 ),
 
               ],
