@@ -7,6 +7,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'OnBoardingScreen.dart';
 
 class SplashScreen extends StatefulWidget {
+  static const String ScreenRoute = "splash_screen";
+
   const SplashScreen({super.key});
 
   @override

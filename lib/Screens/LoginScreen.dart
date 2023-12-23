@@ -1,10 +1,13 @@
 
 import 'package:chat_ease/Components/Components.dart';
 import 'package:chat_ease/Screens/RegisterScreen.dart';
+import 'package:chat_ease/Screens/chatScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class LoginScreen extends StatefulWidget {
+  static const String ScreenRoute = "login_screen";
+
   const LoginScreen({super.key});
 
   @override
@@ -13,13 +16,13 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   TextEditingController emailController = TextEditingController();
-
   TextEditingController passwordController = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
 
   bool rememberMe = false;
   bool isShowing = false;
+
   IconData ? icon ;
 
   @override
@@ -155,6 +158,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                 if(_formKey.currentState!.validate()){
                                   _formKey.currentState!.save();
                                 }
+                                print(emailController.text);
+                                Navigator.pushNamed(context, ChatScreen.ScreenRoute);
                                    //todo navigate to home screen
                               },
                               "Login",
@@ -167,10 +172,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   Colors.grey.shade700, 13.0, FontWeight.normal),
                               TextButton(
                                 onPressed: () {
-                                  Navigator.of(context)
-                                      .push(MaterialPageRoute(builder: (_) {
-                                    return const RegisterScreen();
-                                  }));
+                                  Navigator.pushNamed(context, RegisterScreen.ScreenRoute);
                                 },
                                 child: txt("Register", Colors.black, 13.0,
                                     FontWeight.w700),

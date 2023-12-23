@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class RegisterScreen extends StatefulWidget {
+  static const String ScreenRoute = "register_screen";
+
   const RegisterScreen({super.key});
 
   @override

@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class OnBoardingScreen extends StatelessWidget {
+  static const String ScreenRoute = "onBoarding_screen";
+
   const OnBoardingScreen({super.key});
 
   @override
@@ -78,10 +80,9 @@ class OnBoardingScreen extends StatelessWidget {
                     double.infinity,
                     64,
                     Colors.white,
-                    () { Navigator.of(context).pushReplacement(
-                         MaterialPageRoute(builder: (c) {
-                         return const LoginScreen();
-                  }),);},
+                    () {
+                      Navigator.pushNamed(context, LoginScreen.ScreenRoute);
+                    },
                     "Get Started",
                   Colors.black
 

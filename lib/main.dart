@@ -1,3 +1,6 @@
+import 'package:chat_ease/Screens/LoginScreen.dart';
+import 'package:chat_ease/Screens/OnBoardingScreen.dart';
+import 'package:chat_ease/Screens/RegisterScreen.dart';
 import 'package:chat_ease/Screens/SplashScreen.dart';
 import 'package:flutter/material.dart';
 
@@ -21,7 +24,14 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const ChatScreen(),
+      initialRoute: SplashScreen.ScreenRoute,
+      routes: {
+        SplashScreen.ScreenRoute: (context) => SplashScreen(),
+        OnBoardingScreen.ScreenRoute: (context) => OnBoardingScreen(),
+        LoginScreen.ScreenRoute: (context) => LoginScreen(),
+        RegisterScreen.ScreenRoute: (context) => RegisterScreen(),
+        ChatScreen.ScreenRoute: (context) => ChatScreen(),
+      },
     );
   }
 }
