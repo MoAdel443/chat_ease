@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:chat_ease/Componenets/Components.dart';
+import 'package:chat_ease/Components/Components.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 

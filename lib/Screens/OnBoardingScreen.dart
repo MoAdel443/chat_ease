@@ -1,4 +1,4 @@
-import 'package:chat_ease/Componenets/Components.dart';
+import 'package:chat_ease/Components/Components.dart';
 import 'package:chat_ease/Screens/LoginScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -50,7 +50,7 @@ class OnBoardingScreen extends StatelessWidget {
                       width: 24.0,
                       height: 24.0,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 5.0,
                     ),
                     txt("Secure, private messaging", Colors.white, 16.0, FontWeight.w500),
@@ -80,7 +80,7 @@ class OnBoardingScreen extends StatelessWidget {
                     Colors.white,
                     () { Navigator.of(context).pushReplacement(
                          MaterialPageRoute(builder: (c) {
-                         return LoginScreen();
+                         return const LoginScreen();
                   }),);},
                     "Get Started",
                   Colors.black

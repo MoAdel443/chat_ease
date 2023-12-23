@@ -1,11 +1,11 @@
-import 'package:chat_ease/Componenets/Components.dart'
-    show button, textFromField, txt;
+
+import 'package:chat_ease/Components/Components.dart';
 import 'package:chat_ease/Screens/RegisterScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class LoginScreen extends StatefulWidget {
-  LoginScreen({super.key});
+  const LoginScreen({super.key});
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
@@ -49,7 +49,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 decoration: const BoxDecoration(
                     image: DecorationImage(
                         image:
-                            const AssetImage("assets/images/onBoardingBG.png"),
+                            AssetImage("assets/images/onBoardingBG.png"),
                         fit: BoxFit.cover,
                         colorFilter:
                             ColorFilter.mode(Colors.white70, BlendMode.screen)),
@@ -144,7 +144,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               )
                             ],
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 20.0,
                           ),
                           button(
@@ -207,16 +207,26 @@ class _LoginScreenState extends State<LoginScreen> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              CircleAvatar(
-                                radius: 25.0,
-                                backgroundColor: Colors.white,
-                                child: SvgPicture.asset("assets/images/gmail.svg",width: 25.0,height: 25.0,),
+                              InkWell(
+                                onTap: () {
+                                  //todo do registration with facebook
+                                },
+                                child: CircleAvatar(
+                                  radius: 25.0,
+                                  backgroundColor: Colors.white,
+                                  child: SvgPicture.asset("assets/images/facebook.svg",width: 30.0,height: 30.0,),
+                                ),
                               ),
                               const SizedBox(width: 21.0,),
-                              CircleAvatar(
-                                radius: 25.0,
-                                backgroundColor: Colors.white,
-                                child: SvgPicture.asset("assets/images/facebook.svg",width: 25.0,height: 25.0,),
+                              InkWell(
+                                onTap: () {
+                                  //todo do registration with gmail
+                                },
+                                child: CircleAvatar(
+                                  radius: 25.0,
+                                  backgroundColor: Colors.white,
+                                  child: SvgPicture.asset("assets/images/gmail.svg",width: 30.0,height: 30.0,),
+                                ),
                               ),
                             ],
                           ),
