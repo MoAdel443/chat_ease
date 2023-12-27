@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "628380597382",
+    "project_id": "chat-ease-4a702",
+    "storage_bucket": "chat-ease-4a702.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:628380597382:android:201241d662db9ff0636507",
+        "android_client_info": {
+          "package_name": "com.example.chat_ease"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQXr4YpAztwr-ylEs8YS2pIo9UhVMhoAE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

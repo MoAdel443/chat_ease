@@ -1,4 +1,5 @@
 import 'package:chat_ease/Components/Components.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -11,6 +12,28 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
+
+  final _auth = FirebaseAuth.instance;
+  late User signedInUser ;
+
+  void getCurrentUser (){
+    try{
+      final user = _auth.currentUser;
+      if(user != null){
+        signedInUser = user ;
+        print(signedInUser.email);
+      }
+    }catch(e){
+      print(e);
+    }
+  }
+
+  @override
+  void initState() {
+    getCurrentUser();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +47,7 @@ class _ChatScreenState extends State<ChatScreen> {
               height: 25.0,
               color: Colors.white,
             ),
-            SizedBox(
+            const SizedBox(
               width: 10.0,
             ),
             txt("ChatEase", Colors.white, 18.0, FontWeight.w700)
@@ -32,8 +55,11 @@ class _ChatScreenState extends State<ChatScreen> {
         ),
         actions: [
           IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.close),
+            onPressed: () {
+              _auth.signOut();
+              Navigator.pop(context);
+            },
+            icon: const Icon(Icons.close),
             color: Colors.white,
           )
         ],
@@ -68,7 +94,7 @@ class _ChatScreenState extends State<ChatScreen> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(bottom: 12.0,right: 12.0),
-                    child: TextButton(onPressed: () {}, child: Text("Send")),
+                    child: TextButton(onPressed: () {}, child: const Text("Send")),
                   )
                 ],
               ),

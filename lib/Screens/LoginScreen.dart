@@ -2,6 +2,7 @@
 import 'package:chat_ease/Components/Components.dart';
 import 'package:chat_ease/Screens/RegisterScreen.dart';
 import 'package:chat_ease/Screens/chatScreen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -22,8 +23,11 @@ class _LoginScreenState extends State<LoginScreen> {
 
   bool rememberMe = false;
   bool isShowing = false;
+  bool isPressed = false;
 
   IconData ? icon ;
+
+  final _auth = FirebaseAuth.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -150,17 +154,39 @@ class _LoginScreenState extends State<LoginScreen> {
                           const SizedBox(
                             height: 20.0,
                           ),
+                          isPressed ?
+                          const Center(
+                            child: CircularProgressIndicator(
+                              color: Colors.black,
+
+                            ),
+                          ) :
                           button(
                               double.infinity,
                               64,
                               Colors.black,
-                              () {
+                              () async {
+
                                 if(_formKey.currentState!.validate()){
                                   _formKey.currentState!.save();
+                                  setState(() {
+                                    isPressed = true;
+                                  });
                                 }
-                                print(emailController.text);
-                                Navigator.pushNamed(context, ChatScreen.ScreenRoute);
-                                   //todo navigate to home screen
+
+                                try{
+                                  final user = await _auth.signInWithEmailAndPassword(
+                                      email: emailController.text,
+                                      password: passwordController.text
+                                  );
+                                  if(user !=null){
+                                    Navigator.pushNamed(context, ChatScreen.ScreenRoute);
+                                  }
+                                }catch(e){
+                                  print(e);
+                                  //todo show toast
+                                }
+
                               },
                               "Login",
                               Colors.white

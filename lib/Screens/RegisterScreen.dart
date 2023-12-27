@@ -1,4 +1,6 @@
 import 'package:chat_ease/Components/Components.dart';
+import 'package:chat_ease/Screens/chatScreen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -20,7 +22,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final _formKey = GlobalKey<FormState>();
 
   bool isShowing = true;
+  bool isPressed = false;
   IconData? icon;
+
+  final _auth = FirebaseAuth.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -190,12 +195,31 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           const SizedBox(
                             height: 56.0,
                           ),
-                          button(double.infinity, 64, Colors.black, () {
-                            if (_formKey.currentState!.validate()) {
-                              _formKey.currentState!.save();
-                            }
-                            //todo navigate to home screen
-                          }, "Register", Colors.white),
+                          isPressed
+                              ? const Center(
+                                  child: CircularProgressIndicator(
+                                    color: Colors.black,
+                                  ),
+                                )
+                              : button(double.infinity, 64, Colors.black,
+                                  () async {
+                                  if (_formKey.currentState!.validate()) {
+                                    _formKey.currentState!.save();
+                                    setState(() {
+                                      isPressed = true;
+                                    });
+                                  }
+                                  try {
+                                    final newUser = await _auth
+                                        .createUserWithEmailAndPassword(
+                                            email: emailController.text,
+                                            password: passwordController.text);
+                                    Navigator.pushNamed(
+                                        context, ChatScreen.ScreenRoute);
+                                  } catch (e) {
+                                    print(e);
+                                  }
+                                }, "Register", Colors.white),
                           const SizedBox(
                             height: 20.0,
                           ),

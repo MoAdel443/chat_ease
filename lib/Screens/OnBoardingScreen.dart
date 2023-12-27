@@ -21,74 +21,80 @@ class OnBoardingScreen extends StatelessWidget {
         child: Center(
           child: Padding(
             padding: const EdgeInsets.only(top: 117.0 ,left: 15.0,right: 15.0),
-            child: Column(
-              children: [
-                txt("ChatEase", Colors.grey.shade300, 35.0, FontWeight.bold),
-                const SizedBox(
-                  height: 41.0,
-                ),
-                SvgPicture.asset("assets/images/onBoarding.svg",
-                  width: 280,
-                  height: 225.0,
-                  
-                ),
-                const SizedBox(
-                  height: 40.0,
-                ),
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  txt("ChatEase", Colors.grey.shade300, 35.0, FontWeight.bold),
+                  const SizedBox(
+                    height: 41.0,
+                  ),
+                  SvgPicture.asset("assets/images/onBoarding.svg",
+                    width: 280,
+                    height: 225.0,
+                    
+                  ),
+                  const SizedBox(
+                    height: 40.0,
+                  ),
 
-                txt("Stay connected with your friends and family",
-                    Colors.white, 
-                    35.0,
-                    FontWeight.w700,
-                    height: 1.3
-                ),
-                const SizedBox(
-                  height: 30.0,
-                ),
-                Row(
-                  children: [
-                    SvgPicture.asset(
-                      "assets/images/check.svg",
-                      width: 24.0,
-                      height: 24.0,
+                  txt("Stay connected with your friends and family",
+                      Colors.white, 
+                      35.0,
+                      FontWeight.w700,
+                      height: 1.3
+                  ),
+                  const SizedBox(
+                    height: 30.0,
+                  ),
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        SvgPicture.asset(
+                          "assets/images/check.svg",
+                          width: 24.0,
+                          height: 24.0,
+                        ),
+                        const SizedBox(
+                          width: 5.0,
+                        ),
+                        txt("Secure, private messaging", Colors.white, 16.0, FontWeight.w500),
+                      ],
                     ),
-                    const SizedBox(
-                      width: 5.0,
-                    ),
-                    txt("Secure, private messaging", Colors.white, 16.0, FontWeight.w500),
-                  ],
-                ),
-                const SizedBox(
-                  height: 60.0,
-                ),
-                // SizedBox(
-                //   width: double.infinity,
-                //   height: 64,
-                //   child: MaterialButton(
-                //     color: Colors.white,
-                //     shape: const StadiumBorder(),
-                //     onPressed: (){
-                //       Navigator.of(context).pushReplacement(
-                //         MaterialPageRoute(builder: (c) {
-                //         return LoginScreen();
-                //       }),);
-                //     },
-                //     child: txt("Get Started", Colors.black, 16.0, FontWeight.bold),
-                //   ),
-                // ),
-                button(
-                    double.infinity,
-                    64,
-                    Colors.white,
-                    () {
-                      Navigator.pushNamed(context, LoginScreen.ScreenRoute);
-                    },
-                    "Get Started",
-                  Colors.black
+                  ),
+                  const SizedBox(
+                    height: 60.0,
+                  ),
+                  // SizedBox(
+                  //   width: double.infinity,
+                  //   height: 64,
+                  //   child: MaterialButton(
+                  //     color: Colors.white,
+                  //     shape: const StadiumBorder(),
+                  //     onPressed: (){
+                  //       Navigator.of(context).pushReplacement(
+                  //         MaterialPageRoute(builder: (c) {
+                  //         return LoginScreen();
+                  //       }),);
+                  //     },
+                  //     child: txt("Get Started", Colors.black, 16.0, FontWeight.bold),
+                  //   ),
+                  // ),
+                  button(
+                      double.infinity,
+                      64,
+                      Colors.white,
+                      () {
+                        Navigator.pushNamed(context, LoginScreen.ScreenRoute);
+                      },
+                      "Get Started",
+                    Colors.black
 
-                ),
+                  ),
 
-              ],
+                ],
+              ),
             ),
           ),
         ),
