@@ -1,4 +1,5 @@
 import 'package:chat_ease/Components/Components.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -12,7 +13,9 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
-
+  TextEditingController messageController = TextEditingController();
+  
+  final _fireStore = FirebaseFirestore.instance;
   final _auth = FirebaseAuth.instance;
   late User signedInUser ;
 
@@ -83,7 +86,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     child: Padding(
                       padding: const EdgeInsets.only(bottom: 12.0,left: 12.0),
                       child: TextField(
-                        onChanged: (value) {},
+                        controller: messageController,
                         decoration: const InputDecoration(
                             contentPadding: EdgeInsets.symmetric(
                                 horizontal: 20, vertical: 10),
@@ -94,7 +97,15 @@ class _ChatScreenState extends State<ChatScreen> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(bottom: 12.0,right: 12.0),
-                    child: TextButton(onPressed: () {}, child: const Text("Send")),
+                    child: TextButton(
+                        onPressed: () {
+                          _fireStore.collection("messages").add({
+                            "text":messageController.text,
+                            "sender":signedInUser.email,
+                          });
+                        },
+                        child: const Text("Send"),
+                    ),
                   )
                 ],
               ),

@@ -4,6 +4,7 @@ import 'package:chat_ease/Screens/RegisterScreen.dart';
 import 'package:chat_ease/Screens/chatScreen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_styled_toast/flutter_styled_toast.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -182,8 +183,33 @@ class _LoginScreenState extends State<LoginScreen> {
                                   if(user !=null){
                                     Navigator.pushNamed(context, ChatScreen.ScreenRoute);
                                   }
+                                  showToast('welcome ${emailController.text}',
+                                    context: context,
+                                    backgroundColor: Colors.green,
+                                    animation: StyledToastAnimation.scale,
+                                    reverseAnimation: StyledToastAnimation.fade,
+                                    position: StyledToastPosition.center,
+                                    animDuration: Duration(seconds: 1),
+                                    duration: Duration(seconds: 3),
+                                    curve: Curves.elasticOut,
+                                    reverseCurve: Curves.linear,
+                                  );
                                 }catch(e){
                                   print(e);
+                                  setState(() {
+                                    isPressed = false;
+                                  });
+                                  showToast('Email or password are wrong',
+                                    context: context,
+                                    backgroundColor: Colors.red,
+                                    animation: StyledToastAnimation.scale,
+                                    reverseAnimation: StyledToastAnimation.fade,
+                                    position: StyledToastPosition.center,
+                                    animDuration: Duration(seconds: 1),
+                                    duration: Duration(seconds: 4),
+                                    curve: Curves.elasticOut,
+                                    reverseCurve: Curves.linear,
+                                  );
                                   //todo show toast
                                 }
 
