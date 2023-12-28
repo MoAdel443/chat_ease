@@ -214,7 +214,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                         .createUserWithEmailAndPassword(
                                             email: emailController.text,
                                             password: passwordController.text);
-                                    Navigator.pushNamed(
+                                     Navigator.pushNamed(
                                         context, ChatScreen.ScreenRoute);
                                   } catch (e) {
                                     print(e);
